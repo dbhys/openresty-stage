@@ -27,4 +27,15 @@ When you run this image directly or test your service on your host, we recommend
  1. docker run -it --net=host --rm openresty-stage:1.0.1 sh
  2. /usr/local/openresty/bin/openresty -p ${PREFIX} -g 'daemon off;'
 
+### How to use
 
+Notice: you must add $PREFIX dir to the lua_package_path in your conf/nginx.conf. the example is in the [conf/nginx.conf](conf/nginx.conf). actually, the $prefix is the dir behind "openresty -p", in our image it is the same as $PREFIX.
+
+#### Mount workdir
+
+If you don't want to change anything of the container, just run your lua code, the best way is mount your workdir
+to the container workdir(/usr/local/stage), and the dir must contain the file conf/nginx.conf
+
+#### From this image
+
+You can build your own image from this image, May be just replace those enviroment variables or commands (PREFIX, COPY, EXPOSE...)
