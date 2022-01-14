@@ -12,7 +12,7 @@ Base image is alpine:3.13, and the core files are copied from openresty:alpine, 
 
 ### Build
 
-docker build -t openresty-stage:1.0.1 .
+docker build -t openresty-stage:2.0.1 .
 
 ### Run
 
@@ -20,11 +20,11 @@ When you run this image directly or test your service on your host, we recommend
 
 #### Run a container
 
- docker run -d --net=host --rm openresty-stage:1.0.1
+ docker run -d --net=host --rm openresty-stage:2.0.1
 
 #### Run in container
 
- 1. docker run -it --net=host --rm openresty-stage:1.0.1 sh
+ 1. docker run -it --net=host --rm openresty-stage:2.0.1 sh
  2. /usr/local/openresty/bin/openresty -p ${PREFIX} -g 'daemon off;'
 
 ### How to use

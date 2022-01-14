@@ -1,12 +1,11 @@
 ARG ENABLE_PROXY=false
 
-FROM openresty/openresty:alpine AS production-stage
-
+FROM openresty/openresty:1.19.9.1-4-alpine AS production-stage
 
 
 FROM alpine:3.13 AS last-stage
 
-LABEL name="Openresty Stage" version="0.0.1"
+LABEL name="Openresty Stage" version="2.0.1" tags="openresty 1.19.9.1-4-alpine"
 
 ARG ENABLE_PROXY
 ARG PREFIX=/usr/local/stage
@@ -29,9 +28,7 @@ WORKDIR $PREFIX
 
 COPY ./conf/ ./conf/
 
-RUN mkdir -p logs \
-    && ln -sf /dev/stdout $PREFIX/logs/access.log \
-    && ln -sf /dev/stderr $PREFIX/logs/error.log
+RUN mkdir -p logs
     
 EXPOSE 80
 
